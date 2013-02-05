@@ -3,21 +3,20 @@
     <head>
         <title></title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" href="style.css" type="text/css"/>
         <link rel="stylesheet" href="build/build.css" />
     </head>
     <body>
-        <div id="avatar" title="me gustan las albondigas">Isee client</div>
+        <div id="mapa"></div>
         <script src="build/build.js"></script>
         <script>
             var B = require('solutionio-backbone');
-                B.$ = require('component-jquery');
+                $ = require('component-jquery');
             
             B.sync = function(method, model, options) {
 
-console.log(method, model);
-
                 if (method === "create") {
-                    B.$.ajax({
+                    $.ajax({
                         url: "http://isee.tiatere.es:3000/quejas",
                         type: "POST",
                         dataType: "json",
@@ -29,7 +28,7 @@ console.log(method, model);
                     });
                 }
                 if (method === "read") {
-                    B.$.ajax({
+                    $.ajax({
                         url: "http://isee.tiatere.es:3000/quejas",
                         type: "GET",
                         dataType: "json",
@@ -64,12 +63,18 @@ console.log(method, model);
                 "loc": [41.12, 0.122]
             });
             var quejas = new QuejasCollection();
-            queja.save();
+            //queja.save();
             //quejas.fetch();
             //queja.save();
             
             
+            //initialize app variable
+            var app = {
+                modules: {}
+            };
+            
             
         </script>
+        <script type="text/javascript" src="js/geolocation.js"></script>
     </body>
 </html>

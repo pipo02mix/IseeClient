@@ -1,0 +1,14 @@
+{
+    "name": "Client Isee",
+    "dependencies": {
+        "component/tip": "*",
+        "component/dialog": "*",
+        "component/inherit": "*",
+        "component/mime": "*",
+        "component/escape-html": "*",
+        "component/escape-regexp": "*",
+        "component/jquery": "*",
+        "solutionio/backbone": "*",
+        "component/popover": "*"
+    }
+}

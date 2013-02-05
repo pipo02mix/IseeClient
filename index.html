@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" href="build/build.css" />
+    </head>
+    <body>
+        <div id="avatar" title="me gustan las albondigas">TODO write content</div>
+        <script src="build/build.js"></script>
+        <script>
+            var B = require('solutionio-backbone');
+                B.$ = require('component-jquery');
+            
+            B.sync = function(method, model, options) {
+
+console.log(method, model);
+
+                if (method === "create") {
+                    B.$.ajax({
+                        url: "http://isee.tiatere.es:3000/quejas",
+                        type: "POST",
+                        dataType: "json",
+                        crossDomain: true,
+                        data: model.attributes,
+                        success: function(res){
+                            console.log(res);
+                        }
+                    });
+                }
+                if (method === "read") {
+                    B.$.ajax({
+                        url: "http://isee.tiatere.es:3000/quejas",
+                        type: "GET",
+                        dataType: "json",
+                        crossDomain: true,
+                        data: '',
+                        success: function(res){
+                            console.log("res", res);
+                        }
+                    }).done(function(data){
+                        console.log("hecho", data)
+                    });
+                }
+
+            };
+            
+            var QuejaModel = B.Model.extend({
+                idAttribute: "_id",
+                urlRoot : '/quejas',
+                defaults: {
+                    "title" : "mi queja",
+                    "loc": [ 42.12, 0.221 ]
+                    
+                }
+            });
+            
+            var QuejasCollection = B.Collection.extend({
+                model: QuejaModel
+            });
+            
+            var queja = new QuejaModel({
+                "title": "mi primera queja",
+                "loc": [41.12, 0.122]
+            });
+            var quejas = new QuejasCollection();
+            queja.save();
+            //quejas.fetch();
+            //queja.save();
+            
+            
+            
+        </script>
+    </body>
+</html>

@@ -15,6 +15,10 @@ app.modules.geolocation = (function () {
         provider.configure();
         getGeolocation(provider.drawMap);
     }
+    
+    function reDraw(pos){
+        
+    }
 
 
     function addMarker(marker){
@@ -77,10 +81,12 @@ app.modules.geolocation.mapProviderGoogle = function() {
     var that = this
     ,   map
     ,   name = 'google'
-    ,   controller;
+    ,   controller
+    ,   muttex = true;;
 
     function configure(){
         controller = google;
+        
     }
 
     function loadLibrary(){
@@ -110,6 +116,14 @@ app.modules.geolocation.mapProviderGoogle = function() {
         controller.maps.event.addListenerOnce(map, 'idle', function() {
             $(document).trigger("map-load");
         });
+        controller.maps.event.addListener(map, 'center_changed', function() {
+    
+            app.modules.geolocation.viewportPosition ={
+                    lat: map.getCenter().lat(),
+                    lon: map.getCenter().lng()
+                };
+             delay("map-moved");
+         });
     }
 
     function addMarker(m){
@@ -131,6 +145,18 @@ app.modules.geolocation.mapProviderGoogle = function() {
             // where I have added .html to the marker object.
             infoWindow.open(map, marker);
         });
+    }
+    
+    function delay(e){
+        
+        if (muttex) {
+            muttex = false;
+            setTimeout(function(){
+                $(document).trigger(e);
+                muttex = true;
+            }, 2000);
+        }
+        
     }
 
     return {

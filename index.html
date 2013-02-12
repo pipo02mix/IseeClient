@@ -1,10 +1,17 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
     <head>
-        <title></title>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>ISEE</title>
+        
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+        <meta charset="utf-8">
+        
+	<meta name="description" content="">
+        
+        <link rel="stylesheet" href="normalize.css" type="text/css"/>
         <link rel="stylesheet" href="style.css" type="text/css"/>
-        <link rel="stylesheet" href="build/build.css" />
+        
+        <script data-main="js/main" src="js/libs/require/require.js"></script>
     </head>
     <body>
         <div id="mapa"></div>
@@ -15,26 +22,5 @@
                 <li>Ajustes</li>
             </ul>
         </div>
-        <script src="build/build.js"></script>
-         <script>
-            var B = require('solutionio-backbone')
-            ,   $ = B.$ = require('component-jquery')
-            ,   _ = require('component-underscore');
-            
-            //initialize app variable
-            var app = {
-                modules: {}
-            };
-        </script>
-        <script type="text/javascript" src="js/geolocation.js"></script>
-        <script type="text/javascript" src="js/quejas.js"></script>
-        <script>
-            
-            $(function(){
-                //init map system
-                app.modules.geolocation.init(app.modules.geolocation.mapProviderGoogle());
-            });
-            
-        </script>
     </body>
 </html>

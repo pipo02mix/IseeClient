@@ -1,0 +1,13 @@
+!!!5
+html
+  head
+    title Isee Cliente
+    meta(charset="utf-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0, user-scalable=no")
+    meta(name="description", content="Te ayudamos a que tus quejas sean atendidas")
+    script
+      var user = !{JSON.stringify(user)};
+    script(type="text/javascript", data-main="js/main", src="js/libs/require/require.js")
+    link(rel='stylesheet', href='css/style.css')
+  body
+    block content

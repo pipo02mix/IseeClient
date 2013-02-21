@@ -1,0 +1,11 @@
+!!! 5
+html
+  head
+  body
+    h2 Configura tu cuenta
+    p para poder enviarte notificaciones debes introducir tu email
+    form(action="/user", method="post")
+      input#username(name="username", type="text", value="#{user.username}")
+      input#password(name="password", type="password", value="")
+      input#email(name="email", type="email", value="#{user.email}")
+      input#submit(type="submit", value="Guardar")

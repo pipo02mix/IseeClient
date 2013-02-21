@@ -1,0 +1,26 @@
+!!!5
+html
+  head
+    title Isee Cliente
+    meta(charset="utf-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0, user-scalable=no")
+    meta(name="description", content="Te ayudamos a que tus quejas sean atendidas")
+    script(type="text/javascript", data-main="../public/js/main", src="../public/js/libs/require/require.js")
+    link(rel='stylesheet', href='css/style.css')
+  body
+  h2 Accede a ISEE
+- if (typeof(message) !== 'undefined'){
+  #{message}
+-}
+  form(action="/login", method="post")
+    #username
+      label Username:
+      input(type="text", name="username")
+    #password
+      label Password:
+      input(type="password", name="password")
+    #button
+      input(type="submit", value="Log In")
+  #twitter-login(style='float: left; margin-left: 5px')
+    a(href='/auth/twitter', style='border: 0px')
+      img(style='border: 0px', src='http://github.com/intridea/authbuttons/raw/master/png/twitter_32.png')
